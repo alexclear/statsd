@@ -112,7 +112,7 @@ sub send {
 	my $count=0;
 	my $socket = $self->{socket};
 	while (my($stat,$value) = each %$sampled_data) {
-		print $socket "$stat:$value\n";
+		$socket->send("$stat:$value\n");
 		++$count;
 	}
 	return $count;
